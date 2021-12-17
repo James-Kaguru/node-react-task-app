@@ -1,21 +1,12 @@
-import useFetch from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
-const Login = () => {
-    const {data: users, isPending, error} = useFetch("/api/users")
-    
+const Home = () => {
     return ( 
-        <div>
-            {
-                isPending ? "loading" :
-                    users.map(({id,name}) =>
-                        <li key={id}>
-                        {name}
-                        </li>
-                    )
-            }
-            
-        </div>
+        <section>
+            <div><Link to="/admin/login">Admin area</Link></div>
+            <div><Link to="/client/login">Employee area</Link></div>
+        </section>
      );
 }
  
-export default Login;
+export default Home;

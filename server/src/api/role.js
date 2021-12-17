@@ -42,7 +42,7 @@ router.put('/:role_id', async (req,res) => {
                 role_id: req.params.role_id,
             }})
         if(!role) res.status(400).json("Record was not found.")
-        Object.assign(role,req.query)
+        Object.assign(role,req.body)
         await role.save()
         res.json(role)
     }

@@ -7,7 +7,7 @@ const router = Router();
 
 router.post('/', async (req,res) => {
     try{        
-        res.json(await AssignedTask.create(req.query))
+        res.json(await AssignedTask.create(req.body))
     } catch(err) { 
         res.status(400).json(handleSequelizeErrors(err)) 
     }
