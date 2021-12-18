@@ -1,11 +1,10 @@
 import useGet from "../hooks/useGet"
 
 const UserOptions = () => {
-    const {isPending, data:users, error } = useGet(`/users`)
+    const {isPending, data:users} = useGet(`/users`)
 
     return ( 
         <select id="to" name="to" >
-            <p>{error ?error:""}</p>
             {
                 isPending ? "loading" :
                 users.map(({user_id,name}) =>

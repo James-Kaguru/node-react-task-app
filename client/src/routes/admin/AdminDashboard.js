@@ -5,6 +5,7 @@ import RolesForm from '../../components/rolesForm';
 import AssignedTasksForm from '../../components/assignedTasksForm';
 import AssignedTasksFromColumn from '../../components/assignedTaskFromColumn';
 import AssignedTasksToColumn from '../../components/assignedTaskToColumn';
+import UserRoles from '../../components/userRoles';
 
 const Dashboard = () => {
     
@@ -13,13 +14,14 @@ const Dashboard = () => {
             <div>
                 <h1>Hotel task app</h1>
             </div>
-            <TaskForm/>
+            {/* <TaskForm/>
             <TaskColumn/>
             <AssignedTasksForm/>
             <AssignedTasksFromColumn/>
-            <AssignedTasksToColumn/>
-            {/* <RolesForm/>
-            <RolesColumn/> */}
+            <AssignedTasksToColumn/> */}
+            <UserRoles />
+            <RolesForm/>
+            <RolesColumn/>
         </section>
      );
 }

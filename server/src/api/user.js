@@ -11,7 +11,7 @@ router.post('/', async (req,res) => {
         const user = await User.create(req.body)
         res.json(user)
     } catch(err) { 
-        res.status(400).json(haSndleSequelizeErrors(err)) 
+        res.status(400).json(handleSequelizeErrors(err)) 
     }
         
 });
@@ -46,7 +46,7 @@ router.put('/:user_id', async (req,res) => {
                 user_id: req.params.user_id,
             }})
         if(!user) res.status(400).json("Record was not found.")
-        Object.assign(user,req.query)
+        Object.assign(user,req.body)
         await user.save()
         res.json(user)
     }

@@ -1,12 +1,11 @@
 const { Router } = require('express');
 const Role = require('../models/Role');
-
 const { handleSequelizeErrors } = require('../services/services');
 const router = Router();
 
 router.post('/', async (req,res) => {
     try{        
-        res.json(await Role.create(req.query))
+        res.json(await Role.create(req.body))
     } catch(err) { 
         res.status(400).json(handleSequelizeErrors(err)) 
     }        

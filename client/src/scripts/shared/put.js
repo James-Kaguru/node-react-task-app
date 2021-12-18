@@ -8,10 +8,15 @@ const put = async (url,data) => {
               method: "PUT",
               body: data
         }) 
-        return( await res.json() )
+
+        if(res.ok) {
+            return( await res.json())
+        } else{
+            throw Error( await res.json())
+        }
     }
     catch (err){
-        throw Error(err.message)
+        alert(err.message)
     }    
 }
  

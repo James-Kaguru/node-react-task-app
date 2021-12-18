@@ -20,14 +20,10 @@ const PermissionForm = () => {
     return ( 
         <section>
             <div>
-                <h1>Hotel task app</h1>
-            </div>
-            <div>
                 
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Permission:</label><br/>
                     <input type="text" id="name" name="name" required/><br/>
-                    
                     <button type="submit">Submit</button>
                 </form>
             </div>

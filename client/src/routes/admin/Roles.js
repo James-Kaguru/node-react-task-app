@@ -6,7 +6,7 @@ import put from "../../scripts/shared/put"
 
 const Roles = () => {  
     const params = useParams()
-    const {isPending, data:role, error } = useGet(`/roles/${params.role_id}`)
+    const {isPending, data:role} = useGet(`/roles/${params.role_id}`)
     
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -26,7 +26,6 @@ const Roles = () => {
             <h1>Hotel task app</h1>
             </div>
             <div>
-                <div><p>{error ? error : "" }</p></div>
                 {
                     isPending ? "loading" : 
                     <form onSubmit={handleSubmit} data_id={role.role_id}>

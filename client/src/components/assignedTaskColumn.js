@@ -5,7 +5,7 @@ import GetUser from "./getUser"
 
 const AssignedTasksToColumn = () => {
     const {user_id} = JSON.parse(sessionStorage.getItem("user"))
-    const {isPending, data:tasks, error } = useGet(`/assigned-tasks/to?to=${user_id}`)
+    const {isPending, data:tasks} = useGet(`/assigned-tasks/to?to=${user_id}`)
     const handleDelete = async(e) => {
         try {
             await deleteRequest(`/assigned-tasks/${e.target.attributes.data_id.value}`)
@@ -17,7 +17,6 @@ const AssignedTasksToColumn = () => {
     return ( 
         <section>
             <p>Tasks youve been assigned</p>
-            <p>{error ?error:""}</p>
             {
                 isPending ? "loading" :
                 tasks.map(({assigned_task_id,name,from}) =>

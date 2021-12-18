@@ -4,10 +4,10 @@ import deleteRequest from "../scripts/shared/delete"
 
 const TasksColumn = () => {
     const {user_id} = JSON.parse(sessionStorage.getItem("user"))
-    const {isPending, data:tasks, error } = useGet(`/tasks/?user_id=${user_id}`)
+    const {isPending, data:tasks} = useGet(`/tasks/?user_id=${user_id}`)
     const handleDelete = async({target}) => {
         try {
-            await deleteRequest(`/roles/${target.attributes.data_id.value}`)
+            await deleteRequest(`/tasks/${target.attributes.data_id.value}`)
             window.location.reload()
         } catch (err){
             alert(err.message)
@@ -16,7 +16,6 @@ const TasksColumn = () => {
     return ( 
         <section>
             <p>tasks</p>
-            <p>{error ?error:""}</p>
             {
                 isPending ? "loading" :
                 tasks.map(({task_id,name}) =>

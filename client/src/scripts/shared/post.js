@@ -8,10 +8,14 @@ const post = async (url,data) => {
               method: "POST",
               body: data
         }) 
-        return( await res.json() )
+        if(res.ok) {
+            return( await res.json())
+        } else{
+            throw Error( await res.json())
+        }
     }
     catch (err){
-        throw Error(err.message)
+        alert(err.message)
     }    
 }
  

@@ -7,7 +7,7 @@ import put from "../scripts/shared/put";
 
 const Permssions = () => {
     const params = useParams()
-    const {isPending, data:permissions, error } = useGet(`/permissions?role_id=${params.role_id}`)
+    const {isPending, data:permissions} = useGet(`/permissions?role_id=${params.role_id}`)
     const handleSubmit = async(e) => {
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -32,7 +32,6 @@ const Permssions = () => {
     }
     return ( 
         <section>
-            <p>{error ?error:""}</p>
             {
                 isPending ? "loading" :
                 permissions.map(({permission_id,name}) =>
@@ -46,7 +45,6 @@ const Permssions = () => {
                         </form>
                         <div>
                             <span>{name} </span>
-                            <span><Link to={`./permissions/${permission_id}`}> Edit </Link></span>
                             <span data_id={permission_id} onClick={handleDelete}>Delete</span>
                         </div>
                     </div>

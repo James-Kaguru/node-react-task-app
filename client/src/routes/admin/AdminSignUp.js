@@ -1,20 +1,21 @@
-import { useState } from "react"
 import { Link } from "react-router-dom";
 
 import post from "../../scripts/shared/post"
 
 const SignUp = () => {
-    const [error,setError] = useState(null)
-    
     const handleSubmit = async(e) => {
         e.preventDefault()
         const formData = new FormData(e.target)
         const object = {}
         formData.forEach((value, key) => object[key] = value)
         try {
-            await post("/users",JSON.stringify(object))
+            const user = await post("/users",JSON.stringify(object))
+            if(user){
+                sessionStorage.setItem("user",JSON.stringify(user))
+                window.location.href = "../admin/dashboard" 
+            }
         } catch (err){
-            setError(err.message)
+            alert(err.message)
         }
     }
     return ( 
@@ -24,7 +25,6 @@ const SignUp = () => {
                 <h1>Hotel task app</h1>
             </div>
             <div>
-                <div><p>{error ? error : "" }</p></div>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Full name:</label><br/>
                     <input type="text" id="name" name="name" required/><br/>
@@ -33,7 +33,7 @@ const SignUp = () => {
                     <label htmlFor="username">Username:</label><br/>
                     <input type="text" id="username" name="username" required/><br/>
                     <label htmlFor="password">password:</label><br/>
-                    <input type="password" id="password" name="password" required/>
+                    <input type="text" id="password" name="password" required/>
                     <button type="submit">Submit</button>
                 </form>
             </div>
